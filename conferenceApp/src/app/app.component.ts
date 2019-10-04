@@ -1,50 +1,83 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+
+import { ScheduleService } from "./services/schedule/schedule.service";
+import { SessionsService } from "./services/sessions/sessions.service";
+import { SpeakersService } from "./services/speakers/speakers.service";
+
+import { ScheduleRepositoryService } from "./repositories/schedule/schedule-repository.service";
+import { SessionsRepositoryService } from "./repositories/sessions/sessions-repository.service";
+import { SpeakersRepositoryService } from "./repositories/speakers/speakers-repository.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"]
 })
 export class AppComponent {
   public appPages = [
     {
-      title: 'Conférence',
-      url: '/home',
-      icon: 'home'
+      title: "Conférence",
+      url: "/home",
+      icon: "home"
     },
     {
-      title: 'Sessions',
-      url: '/sessions',
-      icon: 'list'
+      title: "Sessions",
+      url: "/sessions",
+      icon: "list"
     },
     {
-      title: 'Présentateurs',
-      url: '/presentateurs',
-      icon: 'people'
+      title: "Présentateurs",
+      url: "/presentateurs",
+      icon: "people"
     },
     {
-      title: 'Settings',
-      url: '/settings',
-      icon: 'settings'
+      title: "Settings",
+      url: "/settings",
+      icon: "settings"
     }
   ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private scheduleService: ScheduleService,
+    private sessionsService: SessionsService,
+    private speakersService: SpeakersService,
+    private scheduleRepositoryService: ScheduleRepositoryService,
+    private sessionsRepositoryService: SessionsRepositoryService,
+    private speakersRepositoryService: SpeakersRepositoryService
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
+    // TODO: check internet connection
     this.platform.ready().then(() => {
+      this.initializeLocalData();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+    });
+  }
+
+  async initializeLocalData() {
+    // schedule
+    this.scheduleService.getAllSchedule().subscribe(async schedule => {
+      await this.scheduleRepositoryService.setObject(schedule);
+    });
+
+    // sessions
+    this.sessionsService.getAllSessions().subscribe(async sessions => {
+      await this.sessionsRepositoryService.setObject(sessions);
+    });
+
+    // speakers
+    this.speakersService.getAllSpeakers().subscribe(async speakers => {
+      await this.speakersRepositoryService.setObject(speakers);
     });
   }
 }

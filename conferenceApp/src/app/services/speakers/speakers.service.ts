@@ -10,7 +10,7 @@ export class SpeakersService {
   speakersURL: string;
 
   constructor(private http: HttpClient) {
-    this.speakersURL = API_URL + "/speakers";
+    this.speakersURL = API_URL + "speakers";
   }
 
   getAllSpeakers(): Observable<any> {

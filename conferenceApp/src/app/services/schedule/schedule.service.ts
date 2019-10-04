@@ -10,7 +10,7 @@ export class ScheduleService {
   scheduleURL: string;
 
   constructor(private http: HttpClient) {
-    this.scheduleURL = API_URL + "/schedule";
+    this.scheduleURL = API_URL + "schedule";
   }
 
   getAllSchedule(): Observable<any> {
