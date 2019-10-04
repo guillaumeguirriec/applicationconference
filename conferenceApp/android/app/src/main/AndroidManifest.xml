@@ -43,6 +43,7 @@
     </application>
 
     <!-- Permissions -->
+    <user-permission android:name="android.permission.READ_CONTACTS"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Camera, Photos, input file -->

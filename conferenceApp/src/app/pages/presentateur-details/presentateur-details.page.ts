@@ -35,6 +35,7 @@ export class PresentateurDetailsPage implements OnInit {
     if(this.isContact) {
       let contact: Contact = this.contacts.create();
       contact.name = new ContactName(this.speakerDetails.name);
+      contact.displayName = this.speakerDetails;
       await contact.save();
     }
   }
