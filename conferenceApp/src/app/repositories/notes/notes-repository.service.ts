@@ -24,7 +24,7 @@ export class NotesRepositoryService {
   async getNotesBySessionId(sessionId: string) {
     const notes = await Storage.get({key : 'notes'});
     const notesJSON = JSON.parse(notes.value);
-    if (notesJSON[sessionId]) {
+    if (notesJSON && notesJSON[sessionId]) {
       return notesJSON[sessionId];
     }
     return {note: '', images: []};

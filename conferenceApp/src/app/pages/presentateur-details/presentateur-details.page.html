@@ -15,6 +15,10 @@
     </ion-avatar>
     <h1 class="ion-text-center">{{speakerDetails.name}}</h1>
     <h4 class="ion-text-center company">{{speakerDetails.company}}</h4>
+    <ion-item>
+        <ion-label>Ajouter à mes contacts</ion-label>
+        <ion-toggle color="primary" [(ngModel)]="isContact" (ionChange)="updateIsContact()"></ion-toggle>
+    </ion-item>
     <p class="ion-text-justify ion-padding">
       {{speakerDetails.bio}}
     </p>

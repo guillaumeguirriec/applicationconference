@@ -6,6 +6,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Contacts } from '@ionic-native/contacts';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,7 @@ import { ScheduleRepositoryService } from './repositories/schedule/schedule-repo
 import { SessionsRepositoryService } from './repositories/sessions/sessions-repository.service';
 import { SpeakersRepositoryService } from './repositories/speakers/speakers-repository.service';
 import { NotesRepositoryService } from './repositories/notes/notes-repository.service';
+import { ContactsRepositoryService } from './repositories/contacts/contacts-repository.service';
 
 import { ScheduleService } from './services/schedule/schedule.service';
 import { SessionsService } from './services/sessions/sessions.service';
@@ -38,11 +40,13 @@ import { DeviceService } from './services/device/device.service';
     SessionsRepositoryService,
     SpeakersRepositoryService,
     NotesRepositoryService,
+    ContactsRepositoryService,
     ScheduleService,
     SessionsService,
     SpeakersService,
     NetworkService,
-    DeviceService
+    DeviceService,
+    Contacts
   ],
   bootstrap: [AppComponent]
 })
