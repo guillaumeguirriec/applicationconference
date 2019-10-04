@@ -17,6 +17,7 @@ import { SpeakersRepositoryService } from "./repositories/speakers/speakers-repo
 import { ScheduleService } from "./services/schedule/schedule.service";
 import { SessionsService } from "./services/sessions/sessions.service";
 import { SpeakersService } from "./services/speakers/speakers.service";
+import { NetworkService } from './services/network/network.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +37,8 @@ import { SpeakersService } from "./services/speakers/speakers.service";
     SpeakersRepositoryService,
     ScheduleService,
     SessionsService,
-    SpeakersService
+    SpeakersService,
+    NetworkService
   ],
   bootstrap: [AppComponent]
 })
