@@ -1,12 +1,23 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/presentateurs"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Présentateur</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-  
-  </ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/presentateurs"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Présentateur</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-content">
+    <ion-avatar class="ion-margin-top speaker-avatar">
+      <img src="https://devfest2018.gdgnantes.com{{speakerDetails.photoUrl}}"
+        onerror="this.src='assets/images/placeholder-profile-pic.png'">
+    </ion-avatar>
+    <h1 class="ion-text-center">{{speakerDetails.name}}</h1>
+    <h4 class="ion-text-center company">{{speakerDetails.company}}</h4>
+    <p class="ion-text-justify ion-padding">
+      {{speakerDetails.bio}}
+    </p>
+  </div>
+  <h1 *ngIf="speakerSessions.length > 0" class="ion-padding">Présentations</h1>
+</ion-content>

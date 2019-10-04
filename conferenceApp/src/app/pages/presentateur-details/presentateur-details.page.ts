@@ -10,8 +10,8 @@ import { SpeakersRepositoryService } from '../../repositories/speakers/speakers-
 })
 export class PresentateurDetailsPage implements OnInit {
 
-  private speakerDetails: any = {};
-  private speakerSessions: any = {};
+  speakerDetails: any = {};
+  speakerSessions: any = {};
 
   constructor(private speakersRepositoryService: SpeakersRepositoryService, private activatedRoute: ActivatedRoute) {}
 
