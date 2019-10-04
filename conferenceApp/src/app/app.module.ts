@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ScheduleRepositoryService } from './repositories/schedule/schedule-repository.service';
 import { SessionsRepositoryService } from './repositories/sessions/sessions-repository.service';
 import { SpeakersRepositoryService } from './repositories/speakers/speakers-repository.service';
+import { NotesRepositoryService } from './repositories/notes/notes-repository.service';
 
 import { ScheduleService } from './services/schedule/schedule.service';
 import { SessionsService } from './services/sessions/sessions.service';
@@ -36,6 +37,7 @@ import { DeviceService } from './services/device/device.service';
     ScheduleRepositoryService,
     SessionsRepositoryService,
     SpeakersRepositoryService,
+    NotesRepositoryService,
     ScheduleService,
     SessionsService,
     SpeakersService,
