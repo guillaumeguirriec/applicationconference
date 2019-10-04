@@ -1,27 +1,27 @@
-import { Injectable } from "@angular/core";
-import { Plugins } from "@capacitor/core";
+import { Injectable } from '@angular/core';
+import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class SpeakersRepositoryService {
   constructor() {}
 
   async setObject(speakers: any) {
     await Storage.set({
-      key: "speakers",
+      key: 'speakers',
       value: JSON.stringify(speakers)
     });
   }
 
   async getObject() {
-    const speakers = await Storage.get({ key: "speakers" });
+    const speakers = await Storage.get({ key: 'speakers' });
     return JSON.parse(speakers.value);
   }
 
   async getSpeakerById(id: string) {
-    const speakers = await Storage.get({ key: "speakers" });
+    const speakers = await Storage.get({ key: 'speakers' });
     const speakersJSON = JSON.parse(speakers.value);
     return speakersJSON[id];
   }

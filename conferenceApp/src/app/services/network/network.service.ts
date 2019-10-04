@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugins, NetworkStatus } from '@capacitor/core';
+import { Plugins } from '@capacitor/core';
 const { Network } = Plugins;
 
 import { SessionsRepositoryService } from 'src/app/repositories/sessions/sessions-repository.service';
@@ -31,7 +31,7 @@ export class NetworkService {
 
   addNetworkStatusChangeListener() {
     Network.addListener('networkStatusChange', (status) => {
-      if(status.connected) {
+      if (status.connected) {
         this.reloadAppData();
       }
     });
