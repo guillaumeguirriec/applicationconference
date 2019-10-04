@@ -21,7 +21,7 @@ export class PresentateurDetailsPage implements OnInit {
               private sessionsRepositoryService: SessionsRepositoryService,
               private contactsRepositoryService: ContactsRepositoryService,
               private contacts: Contacts,
-              private activatedRoute: ActivatedRoute) {}
+              private activatedRoute: ActivatedRoute) { }
 
   async ngOnInit() {
     const speakerId: string = this.activatedRoute.snapshot.paramMap.get('id');
@@ -32,10 +32,11 @@ export class PresentateurDetailsPage implements OnInit {
 
   async updateIsContact() {
     await this.contactsRepositoryService.saveIsContact(this.speakerDetails.id, this.isContact);
-    if(this.isContact) {
-      let contact: Contact = this.contacts.create();
+    if (this.isContact) {
+      const contact: Contact = this.contacts.create();
       contact.name = new ContactName(this.speakerDetails.name);
-      contact.displayName = this.speakerDetails;
+      contact.nickname = this.speakerDetails.name;
+      contact.displayName = this.speakerDetails.name;
       await contact.save();
     }
   }
