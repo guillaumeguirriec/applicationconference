@@ -8,5 +8,24 @@
 </ion-header>
 
 <ion-content>
-
+  <div class="page-content">
+    <h1 class="ion-margin">{{session.title}}</h1>
+    <ion-item>
+      <ion-label position="floating">Notes</ion-label>
+      <ion-textarea value="{{notes.note}}" id="notes" (ionChange)="saveNote($event.detail.value)" debounce="500"
+        auto-grow></ion-textarea>
+    </ion-item>
+    <ion-row>
+      <div *ngFor="let image of notes.images">
+        <ion-col>
+          <img src="{{image}}">
+        </ion-col>
+      </div>
+    </ion-row>
+  </div>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="takePicture()">
+    <ion-fab-button>
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
