@@ -12,9 +12,20 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  }
+    path: 'sessions',
+    loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsPageModule)
+  },
+  {
+    path: 'presentateurs',
+    loadChildren: () => import('./presentateurs/presentateurs.module').then(m => m.PresentateursPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
+  },
+  { path: 'session-details', loadChildren: './session-details/session-details.module#SessionDetailsPageModule' },
+  { path: 'presentateur-details', loadChildren: './presentateur-details/presentateur-details.module#PresentateurDetailsPageModule' },
+  { path: 'session-notes', loadChildren: './session-notes/session-notes.module#SessionNotesPageModule' },
 ];
 
 @NgModule({
@@ -23,4 +34,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
