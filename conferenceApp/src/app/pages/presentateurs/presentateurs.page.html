@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Présentateurs
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-content">
+    <ion-list>
+      <ion-item *ngFor="let speakerEntry of speakers | keyvalue" routerLink="/presentateurs/{{speakerEntry.key}}"
+        routerDirection="forward" detail>
+        <ion-avatar slot="start">
+          <img src="https://devfest2018.gdgnantes.com{{speakerEntry.value.photoUrl}}"
+            onerror="this.src='assets/images/placeholder-profile-pic.png'">
+        </ion-avatar>
+        <ion-label>{{speakerEntry.value.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

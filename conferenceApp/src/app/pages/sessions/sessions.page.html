@@ -12,14 +12,9 @@
 <ion-content>
   <div class="page-content">
     <ion-list>
-      <ion-item routerLink="/sessions/1" routerDirection="forward" detail>
-        <ion-label>Pokémon Yellow</ion-label>
-      </ion-item>
-      <ion-item detail>
-        <ion-label>Mega Man X</ion-label>
-      </ion-item>
-      <ion-item detail>
-        <ion-label>The Legend of Zelda</ion-label>
+      <ion-item *ngFor="let sessionEntry of sessions | keyvalue" routerLink="/sessions/{{sessionEntry.key}}"
+        routerDirection="forward" detail>
+        <ion-label>{{sessionEntry.value.title}}</ion-label>
       </ion-item>
     </ion-list>
   </div>
