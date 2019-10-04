@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DeviceInfo, NetworkStatus } from '@capacitor/core';
+import { DeviceService } from 'src/app/services/device/device.service';
+import { NetworkService } from 'src/app/services/network/network.service';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+  private platform: string = '';
+  private osVersion: string = '';
+  private uuid: string = '';
+  private model: string = '';
+  private connectionType: string = '';
 
-  ngOnInit() {
+  constructor(private deviceService: DeviceService, private networkService: NetworkService) {}
+
+  async ngOnInit() {
+    const deviceInfo: DeviceInfo = await this.deviceService.getDeviceInfo();
+    const networkStatus: NetworkStatus = await this.networkService.getNetworkStatus();
+    this.platform = deviceInfo.platform;
+    this.osVersion = deviceInfo.osVersion;
+    this.uuid = deviceInfo.uuid;
+    this.model = deviceInfo.model;
+    this.connectionType = networkStatus.connectionType;
   }
 
 }
