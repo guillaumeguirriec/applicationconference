@@ -17,4 +17,8 @@ export class SessionsPage implements OnInit {
       this.sessions = sessions;
     });
   }
+
+  noSessions(): boolean {
+    return !this.sessions || Object.keys(this.sessions).length < 1;
+  }
 }

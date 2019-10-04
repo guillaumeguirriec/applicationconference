@@ -17,4 +17,8 @@ export class PresentateursPage implements OnInit {
       this.speakers = speakers;
     });
   }
+
+  noSpeakers(): boolean {
+    return !this.speakers || Object.keys(this.speakers).length < 1;
+  }
 }

@@ -15,13 +15,13 @@
       <ion-item *ngFor="let speakerEntry of speakers | keyvalue" routerLink="/presentateurs/{{speakerEntry.key}}"
         routerDirection="forward" detail>
         <ion-avatar slot="start">
-          <img src="https://devfest2018.gdgnantes.com{{speakerEntry.value.photoUrl}}"
+          <img src="https://devfest2018.gdgnantes.com/{{speakerEntry.value.photoUrl}}"
             onerror="this.src='assets/images/placeholder-profile-pic.png'">
         </ion-avatar>
         <ion-label>{{speakerEntry.value.name}}</ion-label>
       </ion-item>
     </ion-list>
-    <div *ngIf="!speakers || !speakers.keys">
+    <div *ngIf="noSpeakers()">
       <app-empty-state></app-empty-state>
     </div>
   </div>

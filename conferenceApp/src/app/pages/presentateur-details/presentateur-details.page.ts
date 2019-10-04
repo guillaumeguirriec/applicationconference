@@ -12,9 +12,11 @@ import { SessionsRepositoryService } from 'src/app/repositories/sessions/session
 export class PresentateurDetailsPage implements OnInit {
 
   speakerDetails: any = {};
-  speakerSessions: any = {};
+  speakerSessions: any = [];
 
-  constructor(private speakersRepositoryService: SpeakersRepositoryService, private sessionsRepositoryService: SessionsRepositoryService, private activatedRoute: ActivatedRoute) {}
+  constructor(private speakersRepositoryService: SpeakersRepositoryService,
+              private sessionsRepositoryService: SessionsRepositoryService,
+              private activatedRoute: ActivatedRoute) {}
 
   async ngOnInit() {
     const speakerId: string = this.activatedRoute.snapshot.paramMap.get('id');

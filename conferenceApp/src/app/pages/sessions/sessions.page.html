@@ -17,7 +17,7 @@
         <ion-label>{{sessionEntry.value.title}}</ion-label>
       </ion-item>
     </ion-list>
-    <div *ngIf="!speakers || !speakers.keys">
+    <div *ngIf="noSessions()">
       <app-empty-state></app-empty-state>
     </div>
   </div>

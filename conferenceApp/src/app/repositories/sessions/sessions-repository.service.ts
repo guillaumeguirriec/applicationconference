@@ -30,7 +30,7 @@ export class SessionsRepositoryService {
     const speakerSessions = [];
     const allSessions: any = await this.getObject();
     Object.values(allSessions).forEach((session: any) => {
-      if(session.speakers && session.speakers.includes(parseInt(speakerId))) {
+      if (session.speakers && session.speakers.includes(parseInt(speakerId, 10))) {
         speakerSessions.push(session);
       }
     });

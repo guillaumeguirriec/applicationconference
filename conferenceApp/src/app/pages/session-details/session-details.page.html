@@ -10,7 +10,7 @@
 <ion-content>
   <div class="page-content">
     <ion-card>
-      <img *ngIf="sessionDetails.image" src="https://devfest2018.gdgnantes.com{{sessionDetails.image}}"
+      <img *ngIf="sessionDetails.image" src="https://devfest2018.gdgnantes.com/{{sessionDetails.image}}"
         onerror="this.src=''">
       <ion-card-header>
         <ion-card-title>{{sessionDetails.title}}</ion-card-title>
@@ -24,7 +24,7 @@
       <ion-item *ngFor="let speaker of sessionSpeakers" routerLink="/presentateurs/{{speaker.id}}"
         routerDirection="forward" detail>
         <ion-avatar slot="start">
-          <img src="https://devfest2018.gdgnantes.com{{speaker.photoUrl}}"
+          <img src="https://devfest2018.gdgnantes.com/{{speaker.photoUrl}}"
             onerror="this.src='assets/images/placeholder-profile-pic.png'">
         </ion-avatar>
         <ion-label>{{speaker.name}}</ion-label>
