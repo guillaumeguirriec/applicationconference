@@ -16,16 +16,25 @@ const routes: Routes = [
     loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsPageModule)
   },
   {
+    path: 'sessions/:id/notes',
+    loadChildren: () => import('./session-notes/session-notes.module').then(m => m.SessionNotesPageModule)
+  },
+  {
+    path: 'sessions/:id',
+    loadChildren: () => import('./session-details/session-details.module').then(m => m.SessionDetailsPageModule)
+  },
+  {
     path: 'presentateurs',
     loadChildren: () => import('./presentateurs/presentateurs.module').then(m => m.PresentateursPageModule)
   },
   {
+    path: 'presentateurs/:id',
+    loadChildren: () => import('./presentateur-details/presentateur-details.module').then(m => m.PresentateurDetailsPageModule)
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
-  },
-  { path: 'session-details', loadChildren: './session-details/session-details.module#SessionDetailsPageModule' },
-  { path: 'presentateur-details', loadChildren: './presentateur-details/presentateur-details.module#PresentateurDetailsPageModule' },
-  { path: 'session-notes', loadChildren: './session-notes/session-notes.module#SessionNotesPageModule' },
+  }
 ];
 
 @NgModule({
