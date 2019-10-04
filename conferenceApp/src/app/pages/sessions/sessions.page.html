@@ -17,5 +17,8 @@
         <ion-label>{{sessionEntry.value.title}}</ion-label>
       </ion-item>
     </ion-list>
+    <div *ngIf="!speakers || !speakers.keys">
+      <app-empty-state></app-empty-state>
+    </div>
   </div>
 </ion-content>
