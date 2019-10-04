@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugins, DeviceInfo } from '@capacitor/core';
+import { Plugins } from '@capacitor/core';
 const { Device } = Plugins;
 
 @Injectable({

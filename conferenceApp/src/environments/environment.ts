@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const API_URL = "https://devfest-nantes-2018-api.cleverapps.io/";
+export const API_URL = 'https://devfest-nantes-2018-api.cleverapps.io/';
 
 /*
  * For easier debugging in development mode, you can import the following file

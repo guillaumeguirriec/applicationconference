@@ -11,11 +11,11 @@ import { NetworkService } from 'src/app/services/network/network.service';
 })
 export class SettingsPage implements OnInit {
 
-  private platform: string = '';
-  private osVersion: string = '';
-  private uuid: string = '';
-  private model: string = '';
-  private connectionType: string = '';
+  platform = '';
+  osVersion = '';
+  uuid = '';
+  model = '';
+  connectionType = '';
 
   constructor(private deviceService: DeviceService, private networkService: NetworkService) {}
 
