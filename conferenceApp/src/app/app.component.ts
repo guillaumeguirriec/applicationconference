@@ -7,6 +7,7 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { ScheduleService } from "./services/schedule/schedule.service";
 import { SessionsService } from "./services/sessions/sessions.service";
 import { SpeakersService } from "./services/speakers/speakers.service";
+import { NetworkService } from './services/network/network.service';
 
 import { ScheduleRepositoryService } from "./repositories/schedule/schedule-repository.service";
 import { SessionsRepositoryService } from "./repositories/sessions/sessions-repository.service";
@@ -50,34 +51,40 @@ export class AppComponent {
     private speakersService: SpeakersService,
     private scheduleRepositoryService: ScheduleRepositoryService,
     private sessionsRepositoryService: SessionsRepositoryService,
-    private speakersRepositoryService: SpeakersRepositoryService
+    private speakersRepositoryService: SpeakersRepositoryService,
+    private networkService: NetworkService
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
-    // TODO: check internet connection
     this.platform.ready().then(() => {
       this.initializeLocalData();
+      this.networkService.addNetworkStatusChangeListener();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
 
   async initializeLocalData() {
-    // schedule
-    this.scheduleService.getAllSchedule().subscribe(async schedule => {
-      await this.scheduleRepositoryService.setObject(schedule);
-    });
 
-    // sessions
-    this.sessionsService.getAllSessions().subscribe(async sessions => {
-      await this.sessionsRepositoryService.setObject(sessions);
-    });
+    const networkStatus = await this.networkService.getNetworkStatus();
 
-    // speakers
-    this.speakersService.getAllSpeakers().subscribe(async speakers => {
-      await this.speakersRepositoryService.setObject(speakers);
-    });
+    if(networkStatus.connected) {
+      // schedule
+      this.scheduleService.getAllSchedule().subscribe(async schedule => {
+        await this.scheduleRepositoryService.setObject(schedule);
+      });
+
+      // sessions
+      this.sessionsService.getAllSessions().subscribe(async sessions => {
+        await this.sessionsRepositoryService.setObject(sessions);
+      });
+
+      // speakers
+      this.speakersService.getAllSpeakers().subscribe(async speakers => {
+        await this.speakersRepositoryService.setObject(speakers);
+      });
+    }
   }
 }
