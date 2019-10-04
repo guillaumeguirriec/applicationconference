@@ -19,4 +19,10 @@ export class SessionsRepositoryService {
     const sessions = await Storage.get({ key: "sessions" });
     return JSON.parse(sessions.value);
   }
+
+  async getSessionById(id: string) {
+    const sessions = await Storage.get({ key: "sessions" });
+    const sessionsJSON = JSON.parse(sessions.value);
+    return sessionsJSON[id];
+  }
 }

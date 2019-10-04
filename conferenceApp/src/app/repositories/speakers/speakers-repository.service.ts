@@ -19,4 +19,10 @@ export class SpeakersRepositoryService {
     const speakers = await Storage.get({ key: "speakers" });
     return JSON.parse(speakers.value);
   }
+
+  async getSpeakerById(id: string) {
+    const speakers = await Storage.get({ key: "speakers" });
+    const speakersJSON = JSON.parse(speakers.value);
+    return speakersJSON[id];
+  }
 }
