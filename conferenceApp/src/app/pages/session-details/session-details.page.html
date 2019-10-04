@@ -8,5 +8,33 @@
 </ion-header>
 
 <ion-content>
-
+  <div class="page-content">
+    <ion-card>
+      <img *ngIf="sessionDetails.image" src="https://devfest2018.gdgnantes.com{{sessionDetails.image}}"
+        onerror="this.src=''">
+      <ion-card-header>
+        <ion-card-title>{{sessionDetails.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{sessionDetails.description}}
+      </ion-card-content>
+    </ion-card>
+    <h1 *ngIf="sessionSpeakers.length > 0" class="ion-padding">Présentateurs</h1>
+    <ion-list class="ion-padding-end">
+      <ion-item *ngFor="let speaker of sessionSpeakers" routerLink="/presentateurs/{{speaker.id}}"
+        routerDirection="forward" detail>
+        <ion-avatar slot="start">
+          <img src="https://devfest2018.gdgnantes.com{{speaker.photoUrl}}"
+            onerror="this.src='assets/images/placeholder-profile-pic.png'">
+        </ion-avatar>
+        <ion-label>{{speaker.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" edge routerLink="/sessions/{{sessionDetails.id}}/notes"
+    routerDirection="forward">
+    <ion-fab-button>
+      <ion-icon name="clipboard"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
