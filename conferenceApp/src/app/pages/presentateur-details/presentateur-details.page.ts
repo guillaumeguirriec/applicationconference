@@ -20,6 +20,5 @@ export class PresentateurDetailsPage implements OnInit {
     const speakerId: string = this.activatedRoute.snapshot.paramMap.get('id');
     this.speakerDetails = await this.speakersRepositoryService.getSpeakerById(speakerId);
     this.speakerSessions = await this.sessionsRepositoryService.getSessionsBySpeakerId(speakerId);
-    console.log(this.speakerSessions);
   }
 }
